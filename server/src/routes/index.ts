@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { AuthController } from "../controllers/AuthController";
-import { BabyController } from "../controllers/BabyController";
-import { VaccinationController } from "../controllers/VaccinationController";
-import { NCDPatientController } from "../controllers/NCDPatientController";
-import { AuthMiddleware } from "../middleware/auth";
+import { AuthController } from "../controllers/auth";
+import { BabyController } from "../controllers/baby";
+import { VaccinationController } from "../controllers/vaccination";
+import { NCDPatientController } from "../controllers/ncd-patient";
+import { AuthMiddleware } from "../midddleware/auth";
 import { UserRole } from "../types";
 
 export class Routes {

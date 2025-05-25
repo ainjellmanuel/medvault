@@ -1,6 +1,6 @@
-import { Vaccination } from "../models/Vaccination";
+import { Vaccination } from "../models/vaccination";
 import { IVaccination } from "../types";
-import { BaseService } from "./BaseService";
+import { BaseService } from "./base";
 
 export class VaccinationService extends BaseService<IVaccination> {
   protected model = Vaccination;

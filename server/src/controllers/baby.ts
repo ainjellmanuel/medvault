@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Joi from "joi";
-import { BaseController } from "./BaseController";
-import { BabyService } from "../services/BabyService";
+import { BaseController } from "./base";
+import { BabyService } from "../services/baby";
 import { UserRole } from "../types";
 
 interface AuthRequest extends Request {

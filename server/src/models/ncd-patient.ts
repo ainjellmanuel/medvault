@@ -1,9 +1,7 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { INCDPatient, NCDType } from "../types";
+import { NCDType } from "../types";
 
-interface NCDPatientDocument extends INCDPatient, Document {}
-
-const NCDPatientSchema = new Schema<NCDPatientDocument>(
+const NCDPatientSchema = new Schema(
   {
     userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
     dateOfBirth: { type: Date, required: true },
@@ -26,4 +24,4 @@ const NCDPatientSchema = new Schema<NCDPatientDocument>(
   }
 );
 
-export const NCDPatient = mongoose.model<NCDPatientDocument>("NCDPatient", NCDPatientSchema);
+export const NCDPatient = mongoose.model("NCDPatient", NCDPatientSchema);

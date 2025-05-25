@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { UserService } from "../services/UserService";
+import { UserService } from "../services/user";
 import { UserRole } from "../types";
 
 interface AuthRequest extends Request {

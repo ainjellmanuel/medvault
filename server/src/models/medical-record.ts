@@ -1,9 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { IMedicalRecord } from "../types";
 
-interface MedicalRecordDocument extends IMedicalRecord, Document {}
-
-const MedicalRecordSchema = new Schema<MedicalRecordDocument>(
+const MedicalRecordSchema = new Schema(
   {
     patientId: { type: Schema.Types.ObjectId, ref: "NCDPatient", required: true },
     recordDate: { type: Date, required: true },
@@ -30,4 +27,4 @@ const MedicalRecordSchema = new Schema<MedicalRecordDocument>(
   }
 );
 
-export const MedicalRecord = mongoose.model<MedicalRecordDocument>("MedicalRecord", MedicalRecordSchema);
+export const MedicalRecord = mongoose.model("MedicalRecord", MedicalRecordSchema);

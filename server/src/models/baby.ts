@@ -1,9 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { IBaby } from "../types";
 
-interface BabyDocument extends IBaby, Document {}
-
-const BabySchema = new Schema<BabyDocument>(
+const BabySchema = new Schema(
   {
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
@@ -20,4 +17,4 @@ const BabySchema = new Schema<BabyDocument>(
   }
 );
 
-export const Baby = mongoose.model<BabyDocument>("Baby", BabySchema);
+export const Baby = mongoose.model("Baby", BabySchema);

@@ -1,8 +1,8 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { User } from "../models/User";
+import { User } from "../models/user";
 import { IUser, UserRole } from "../types";
-import { BaseService } from "./BaseService";
+import { BaseService } from "./base";
 
 export class UserService extends BaseService<IUser> {
   protected model = User;
@@ -69,13 +69,13 @@ export class UserService extends BaseService<IUser> {
     }
   }
 
-  private generateToken(userId: string, role: UserRole): string {
-    return jwt.sign({ userId, role }, process.env.JWT_SECRET || "your-secret-key", { expiresIn: "24h" });
+  private generateToken(userId: object, role: UserRole): string {
+    return jwt.sign({ userId, role }, process.env.JWT_SECRET || "MEDVAULTKEY", { expiresIn: "24h" });
   }
 
   public verifyToken(token: string): { userId: string; role: UserRole } {
     try {
-      return jwt.verify(token, process.env.JWT_SECRET || "your-secret-key") as { userId: string; role: UserRole };
+      return jwt.verify(token, process.env.JWT_SECRET || "MEDVAULTKEY") as { userId: string; role: UserRole };
     } catch (error) {
       throw new Error("Invalid token");
     }

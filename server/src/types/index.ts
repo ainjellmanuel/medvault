@@ -1,3 +1,5 @@
+import { Types } from "mongoose";
+
 export enum UserRole {
   HEALTHCARE_PROVIDER = "healthcare_provider",
   PARENT = "parent",
@@ -22,7 +24,7 @@ export enum NCDType {
 }
 
 export interface IUser {
-  _id?: string;
+  _id?: Types.ObjectId;
   email: string;
   password: string;
   role: UserRole;
@@ -35,12 +37,11 @@ export interface IUser {
 }
 
 export interface IBaby {
-  _id?: string;
   firstName: string;
   lastName: string;
   dateOfBirth: Date;
   gender: "male" | "female";
-  parentId: string;
+  parentId: Types.ObjectId | string;
   birthWeight?: number;
   birthHeight?: number;
   bloodType?: string;
@@ -50,20 +51,18 @@ export interface IBaby {
 }
 
 export interface IVaccination {
-  _id?: string;
-  babyId: string;
+  babyId: Types.ObjectId | string;
   vaccineType: VaccineType;
   dateAdministered: Date;
   nextDueDate?: Date;
   batchNumber?: string;
-  administeredBy: string; // Healthcare provider ID
+  administeredBy: Types.ObjectId | string; // Healthcare provider ID
   notes?: string;
   createdAt?: Date;
 }
 
 export interface INCDPatient {
-  _id?: string;
-  userId: string;
+  userId: Types.ObjectId | string;
   dateOfBirth: Date;
   gender: "male" | "female";
   emergencyContact: {
@@ -83,8 +82,7 @@ export interface INCDPatient {
 }
 
 export interface IMedicalRecord {
-  _id?: string;
-  patientId: string;
+  patientId: Types.ObjectId | string;
   recordDate: Date;
   recordType: "consultation" | "lab_result" | "prescription" | "follow_up";
   title: string;
@@ -98,6 +96,6 @@ export interface IMedicalRecord {
     bloodSugar?: number;
   };
   attachments?: string[];
-  providerId: string;
+  providerId: Types.ObjectId | string;
   createdAt?: Date;
 }

@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import Joi from "joi";
-import { BaseController } from "./BaseController";
-import { VaccinationService } from "../services/VaccinationService";
-import { BabyService } from "../services/BabyService";
+import { BaseController } from "./base";
+import { VaccinationService } from "../services/vaccination";
+import { BabyService } from "../services/baby";
 import { UserRole, VaccineType } from "../types";
 
 interface AuthRequest extends Request {

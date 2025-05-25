@@ -24,7 +24,6 @@ export class App {
   }
 
   private initializeMiddleware(): void {
-    // Security middleware
     this.app.use(helmet());
     this.app.use(
       cors({
@@ -32,31 +31,25 @@ export class App {
         credentials: true,
       })
     );
-
-    // Rate limiting
     const limiter = rateLimit({
       windowMs: 15 * 60 * 1000, // 15 minutes
       max: 100, // limit each IP to 100 requests per windowMs
     });
     this.app.use(limiter);
 
-    // Body parsing middleware
     this.app.use(express.json({ limit: "10mb" }));
     this.app.use(express.urlencoded({ extended: true }));
   }
 
   private initializeRoutes(): void {
-    // Health check
     this.app.get("/health", (req, res) => {
       res.json({ status: "OK", timestamp: new Date().toISOString() });
     });
 
-    // API routes
     this.app.use("/api", this.routes.getRouter());
   }
 
   private initializeErrorHandling(): void {
-    // 404 handler
     this.app.use("*", (req, res) => {
       res.status(404).json({
         success: false,
@@ -64,7 +57,6 @@ export class App {
       });
     });
 
-    // Global error handler
     this.app.use((error: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
       console.error("Global Error:", error);
       res.status(500).json({
@@ -95,7 +87,6 @@ export class App {
   }
 }
 
-// Start the application
 if (require.main === module) {
   const app = new App();
   app.start();

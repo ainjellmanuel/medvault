@@ -1,6 +1,6 @@
-import { NCDPatient } from "../models/NCDPatient";
+import { NCDPatient } from "../models/ncd-patient";
 import { INCDPatient } from "../types";
-import { BaseService } from "./BaseService";
+import { BaseService } from "./base";
 
 export class NCDPatientService extends BaseService<INCDPatient> {
   protected model = NCDPatient;
@@ -25,7 +25,7 @@ export class NCDPatientService extends BaseService<INCDPatient> {
     }
   }
 
-  public async searchPatients(query: string, limit?: number): Promise<INCDPatient[]> {
+  public async searchPatients(query: string, limit?: number) {
     try {
       let searchQuery = NCDPatient.find().populate({
         path: "userId",
@@ -44,7 +44,7 @@ export class NCDPatientService extends BaseService<INCDPatient> {
       }
 
       const results = await searchQuery.exec();
-      return results.filter((patient) => patient.userId); // Filter out null matches
+      return results.filter((patient) => patient.userId);
     } catch (error) {
       throw new Error(`Error searching NCD patients: ${error}`);
     }

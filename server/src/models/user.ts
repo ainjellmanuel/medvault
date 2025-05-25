@@ -1,9 +1,7 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { IUser, UserRole } from "../types";
+import { UserRole } from "../types";
 
-interface UserDocument extends IUser, Document {}
-
-const UserSchema = new Schema<UserDocument>(
+const UserSchema = new Schema(
   {
     email: { type: String, required: true, unique: true, lowercase: true },
     password: { type: String, required: true },
@@ -18,4 +16,4 @@ const UserSchema = new Schema<UserDocument>(
   }
 );
 
-export const User = mongoose.model<UserDocument>("User", UserSchema);
+export const User = mongoose.model("User", UserSchema);

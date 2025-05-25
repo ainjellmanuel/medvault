@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Joi from "joi";
-import { BaseController } from "./BaseController";
-import { UserService } from "../services/UserService";
+import { BaseController } from "./base";
+import { UserService } from "../services/user";
 import { UserRole } from "../types";
 
 export class AuthController extends BaseController {

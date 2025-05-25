@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Joi from "joi";
-import { BaseController } from "./BaseController";
-import { NCDPatientService } from "../services/NCDPatientService";
+import { BaseController } from "./base";
+import { NCDPatientService } from "../services/ncd-patient";
 import { UserRole, NCDType } from "../types";
 
 interface AuthRequest extends Request {

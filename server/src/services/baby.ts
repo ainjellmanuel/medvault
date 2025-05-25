@@ -1,6 +1,6 @@
-import { Baby } from "../models/Baby";
+import { Baby } from "../models/baby";
 import { IBaby } from "../types";
-import { BaseService } from "./BaseService";
+import { BaseService } from "./base";
 
 export class BabyService extends BaseService<IBaby> {
   protected model = Baby;
