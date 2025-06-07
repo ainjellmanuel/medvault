@@ -1,5 +1,7 @@
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
+import { Button } from "~/components/ui/button";
+import { Alert, AlertDescription, AlertTitle } from "~/components/ui/alert";
+import { CheckCircle2Icon } from "lucide-react";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,5 +11,16 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return <Welcome />;
+  return (
+    <div className="bg-background text-foreground flex min-h-svh flex-col items-center justify-center">
+      <Button>Click me</Button>
+      <Alert>
+        <CheckCircle2Icon />
+        <AlertTitle>Success! Your changes have been saved</AlertTitle>
+        <AlertDescription>
+          This is an alert with icon, title and description.
+        </AlertDescription>
+      </Alert>
+    </div>
+  );
 }
